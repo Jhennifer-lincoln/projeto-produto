@@ -1,0 +1,6 @@
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaau7bjv4dkp7wvvpeu37tk7klm7wstgssehy4rljrwnvqrpzz3uxuq
+fingerprint=bb:88:00:53:1a:a6:a4:ee:1a:5f:29:b5:86:51:48:7d
+tenancy=ocid1.tenancy.oc1..aaaaaaaajwrhemuddojfdbeplul6pk4w3kbnetrdlvfhn5lhfqpbtp3va2ra
+region=sa-saopaulo-1
+key_file=C:\Users\jhenn\Downloads\projeto-produto\.oci\chave.pem
