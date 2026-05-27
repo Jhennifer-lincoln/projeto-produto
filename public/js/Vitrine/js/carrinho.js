@@ -24,10 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function gravarPedido() {
     let carrinho = localStorage.getItem('carrinho');
     
-    // 1. Capturar o e-mail digitado no modal
     let emailUsuario = document.getElementById("emailUsuarioPedido").value;
 
-    // 2. Validar se o e-mail foi preenchido corretamente
     if(!emailUsuario || !emailUsuario.includes("@")) {
         alert("Por favor, insira um e-mail válido para receber a confirmação do pedido.");
         return;
@@ -35,10 +33,9 @@ function gravarPedido() {
 
     if(carrinho != null && carrinho != ''){
 
-        // 3. Montar o payload (pacote de dados) no formato que o nosso back-end atualizado espera
         const payload = {
             email: emailUsuario,
-            carrinho: JSON.parse(carrinho) // Converte a string do localStorage de volta para Array
+            carrinho: JSON.parse(carrinho) 
         };
 
         fetch('/gravar-pedido', {
@@ -46,17 +43,15 @@ function gravarPedido() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(payload) // Envia o e-mail e o carrinho juntos
+            body: JSON.stringify(payload) 
         })
         .then(r => {
             return r.json();
         })
         .then(function(r) {
             if(r.ok){
-                // Mostra a mensagem de sucesso que vem do vitrineController (que diz que o e-mail será enviado)
                 alert(r.msg || "Pedido gravado com sucesso!");
                 
-                // Limpa o carrinho e recarrega a página
                 localStorage.removeItem('carrinho');
                 window.location.reload();
             }
