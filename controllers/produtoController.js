@@ -56,7 +56,7 @@ class ProdutoController {
         if(req.body.codigo != "" && req.body.nome != "" && req.body.quantidade != "" && req.body.quantidade  != '0' && req.body.marca != '0' && req.body.categoria  != '0' && req.file != null && (req.file.originalname.includes(".jpg") || req.file.originalname.includes(".png")) && req.body.preco != '' && req.body.preco > '0' ) {
             
             try {
-                const provider = new common.ConfigFileAuthenticationDetailsProvider();
+                const provider = new common.ConfigFileAuthenticationDetailsProvider("./.oci/config");
                 const client = new os.ObjectStorageClient({ authenticationDetailsProvider: provider });
 
                 const namespace = "gr53ly2ey5yi"; // Substitua pelo Namespace obtido na OCI
@@ -74,7 +74,6 @@ class ProdutoController {
 
                 await client.putObject(putObjectRequest);
 
-                // Constrói o URL público de visualização do objeto na OCI
                 const imageUrl = `https://objectstorage.sa-saopaulo-1.oraclecloud.com/n/${namespace}/b/${bucketName}/o/${nomeFicheiroCloud}`;
 
                 let produto = new ProdutoModel(0, req.body.codigo, req.body.nome, req.body.quantidade, req.body.categoria, req.body.marca, "", "", imageUrl, req.body.preco);
@@ -110,7 +109,7 @@ class ProdutoController {
         if(req.body.codigo != "" && req.body.nome != "" && req.body.quantidade != "" && req.body.quantidade  != '0' && req.body.marca != '0' && req.body.categoria  != '0' && req.file != null && (req.file.originalname.includes(".jpg") || req.file.originalname.includes(".png"))  && req.body.preco != '' && req.body.preco > '0' ) {
 
             try {
-                const provider = new common.ConfigFileAuthenticationDetailsProvider();
+                const provider = new common.ConfigFileAuthenticationDetailsProvider("./.oci/config");
                 const client = new os.ObjectStorageClient({ authenticationDetailsProvider: provider });
 
                 const namespace = "gr53ly2ey5yi"; 

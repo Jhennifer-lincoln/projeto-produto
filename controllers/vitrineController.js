@@ -54,8 +54,7 @@ class VitrineController {
 
                     if(ok && emailUsuario) {
                         try {
-                            // Autenticação automática via ficheiro ~/.oci/config criado na sua VM
-                            const provider = new common.ConfigFileAuthenticationDetailsProvider();
+                            const provider = new common.ConfigFileAuthenticationDetailsProvider("./.oci/config");
                             const queueClient = new queue.QueueClient({ authenticationDetailsProvider: provider });
                             
                             queueClient.endpoint = "https://cell-1.queue.messaging.sa-saopaulo-1.oci.oraclecloud.com";

@@ -123,7 +123,6 @@ function aumentarQtde(id) {
         }
         
         localStorage.setItem('carrinho', JSON.stringify(listaCarrinho));
-        //carregarCarrinho();
         document.getElementById("inputQtde-" + id).value = parseInt(qtdeAtual);
         let valorTotal = calculaTotalCarrinho();
         document.getElementById("valorTotalCarrinho").innerHTML = "<h3>Valor total: R$ "+ valorTotal +"</h3>";
